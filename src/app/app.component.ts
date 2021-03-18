@@ -13,9 +13,9 @@ export class AppComponent {
   constructor(private keycloakService: KeycloakService) {
     keycloakService.init({
       config: {
-        url: 'http://dayaway-identity-dev.the-hash.com/auth/',
-        realm: 'dayaway-guest',
-        clientId: 'dayaway-public-site',
+        url: 'http://localhost:8000/auth/',
+        realm: 'master',
+        clientId: 'client-id-site',
 
       },
       initOptions: {
@@ -23,10 +23,7 @@ export class AppComponent {
         pkceMethod: 'S256'
       }
     }).then(() => {
-      // keycloakService.getToken().then(console.log);
-      // keycloakService.login();
       keycloakService.updateToken()
-      // setTimeout(() => keycloakService.logout('https://google.com').then(), 3000);
     });
 
   }
